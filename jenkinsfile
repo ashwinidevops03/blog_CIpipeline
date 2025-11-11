@@ -48,6 +48,8 @@ pipeline{
         stage('Docker-Run'){
             steps{
                 sh '''
+                    docker rm -f blogappcontainer || true
+                    
                     docker run -d -p 9090:8080 --name blogappcontainer ${IMAGE_NAME}
                 '''
             }
